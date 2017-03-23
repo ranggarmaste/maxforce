@@ -1,0 +1,305 @@
+@font-face {
+	font-family: Raleway-Bold;
+	src: url("../fonts/Raleway-Bold.ttf");
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Raleway-Regular;
+	src: url("../fonts/Raleway-Regular.ttf");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Raleway-Light;
+	src: url("../fonts/Raleway-Light.ttf");
+	font-weight: 300;
+	font-style: normal;
+}
+
+.nav-black {
+	background-color: #000000;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+	min-height: 80px;
+}
+
+.pd-b-10 {
+	padding-bottom: 10px;
+}
+
+.pd-t-10 {
+	padding-top: 10px;
+}
+
+.btn-default {
+	border: 2px solid #fff;
+	background-color: #000;
+}
+
+.about {
+	width: 60%;
+	margin: 0px auto;
+}
+
+.text-about {
+	font-size: 14px;
+	font-family: Raleway-Regular;
+	text-align: center;
+}
+
+.content {
+	background-color: #eee;
+	padding-top: 20px;
+}
+
+.text-italic {
+	font-style: italic;
+}
+
+
+.text-center {
+	text-align: center;
+}
+
+.text-title {
+	font-family: Raleway-Bold;
+	font-size: 28px;
+	line-height: 33px;
+	color: #000000;
+}
+
+.inner {
+	width: 50%;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.circle {
+	border-radius: 50%;
+	width: 170px;
+	height: 170px;
+	background: #D8D8D8;
+}
+
+.diamond-small{
+	display: block;
+	width:12px;
+	height:12px;
+	transform: rotate(45deg);
+	background-color: #000;
+}
+
+hr {
+	border-top: 1px solid #000;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.cont-white {
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+footer{
+	background: black;
+}
+
+.pd-t-40 {
+	padding-top: 40px;
+}
+.pd-b-40 {
+	padding-bottom: 40px;
+}
+
+
+.pd-t-20 {
+	padding-top: 20px;
+}
+.pd-b-20 {
+	padding-bottom: 20px;
+}
+
+body {
+	font-family: Raleway-Light;
+}
+
+h3 {
+	font-size: 28px;
+	font-style: italic;
+	text-align: center;
+	line-height: 33px;
+	color: #d7dfe0;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.text-rel {
+	font-size: 14px;
+	line-height: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-black .navbar-nav>li>a {
+	color: #fff;
+}
+
+.nav-black li a {
+	font-family: Raleway-Bold;
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 14px;
+	letter-spacing: 0.1em;
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 35%;
+  left: 5%;
+  z-index: 20;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+h1 {
+	font-family: Raleway-Bold;
+	text-transform: uppercase;
+}
+
+p {
+	font-family: Raleway-Light;
+	line-height: 36px;
+}
+
+.navbar-default {
+	border: 0px;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #000;
+}
+
+.latest-post {
+	margin-left: -63.297px;
+    display: block;
+    float: left;
+    padding-left: 47%;
+    margin: 0;
+}
+
+.data-post {
+    color: #444444;
+    height: 30px;
+    padding: 7px 6px 4px 7px;
+    text-shadow: 0 0 1px #555;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    background: #777;
+    margin: 0 1px 1px 0;
+    display: block;
+    float: left;
+}
+
+.latest-post li {
+    display: inline;
+    background: none;
+    padding: 0;
+    margin: 0;
+    height: 24px;
+}
+
+
+#element1 {display:inline-block; width:60px;}
+#element2 {display:inline-block;}
+#element3 {display:inline-block; width:60px;}
+
+/* xs */
+p {
+	font-size: 14px;
+}
+
+/* sm */
+@media (min-width: 768px) {
+	p {
+		font-size:18px;
+	}
+}
+
+/* md */
+@media (min-width: 992px) {
+	p {
+		font-size: 24px;
+	}
+}
+/* lg */
+@media (min-width: 1200px) {
+	p {
+		font-size: 24px;
+	}
+}
+
+.btn-c-learn {
+	width: 160px;
+	height: 50px;
+}
+
+h2 {
+	font-family: Raleway-Regular;
+	text-transform: uppercase;
+	font-size: 28px;
+}
+
+.nav-footer li a {
+    color: white;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.product-photo {
+		height: 550px;
+		margin: auto;
+}
+
+.product-photo img {
+		height: 550px;
+}
+
+.product-div {
+		height: 550px;
+}
+
+.product-desc {
+		margin-top: 20px;
+		font-size: 14px;
+}
+
+.confirm-photo {
+		height: 200px;
+}
+
+.confirm-form label {
+		font-size: 18px;
+}
+
+.thanks p {
+		font-size: 18px;
+		margin-bottom: 50px;
+}
+
+.thanks h2 {
+		margin-bottom: 50px;
+		font-size: 40px;
+}
+
+.thanks button {
+		margin-bottom: 50px;
+}
