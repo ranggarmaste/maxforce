@@ -269,6 +269,11 @@ h2 {
 		margin: auto;
 }
 
+.img-full {
+	width: 100%;
+	max-width: 100%;
+}
+
 .product-photo img {
 		height: 550px;
 }
