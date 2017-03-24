@@ -141,7 +141,7 @@ h3 {
 .text-rel {
 	font-size: 14px;
 	line-height: 24px;
-    letter-spacing: 1px;
+	letter-spacing: 1px;
 }
 
 .nav-black .navbar-nav>li>a {
@@ -158,12 +158,12 @@ h3 {
 }
 
 .carousel-content {
-  position: absolute;
-  bottom: 35%;
-  left: 5%;
-  z-index: 20;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+	position: absolute;
+	bottom: 35%;
+	left: 5%;
+	z-index: 20;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
 h1 {
@@ -181,38 +181,38 @@ p {
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
-    text-decoration: none;
-    background-color: #000;
+	text-decoration: none;
+	background-color: #000;
 }
 
 .latest-post {
 	margin-left: -63.297px;
-    display: block;
-    float: left;
-    padding-left: 47%;
-    margin: 0;
+	display: block;
+	float: left;
+	padding-left: 47%;
+	margin: 0;
 }
 
 .data-post {
-    color: #444444;
-    height: 30px;
-    padding: 7px 6px 4px 7px;
-    text-shadow: 0 0 1px #555;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 14px;
-    background: #777;
-    margin: 0 1px 1px 0;
-    display: block;
-    float: left;
+	color: #444444;
+	height: 30px;
+	padding: 7px 6px 4px 7px;
+	text-shadow: 0 0 1px #555;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 14px;
+	background: #777;
+	margin: 0 1px 1px 0;
+	display: block;
+	float: left;
 }
 
 .latest-post li {
-    display: inline;
-    background: none;
-    padding: 0;
-    margin: 0;
-    height: 24px;
+	display: inline;
+	background: none;
+	padding: 0;
+	margin: 0;
+	height: 24px;
 }
 
 
@@ -257,16 +257,16 @@ h2 {
 }
 
 .nav-footer li a {
-    color: white;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+	color: white;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .product-photo {
-		height: 550px;
-		margin: auto;
+	height: 550px;
+	margin: auto;
 }
 
 
@@ -276,36 +276,77 @@ h2 {
 }
 
 .product-photo img {
-		height: 550px;
+	height: 550px;
 }
 
 .product-div {
-		height: 550px;
+	height: 550px;
 }
 
 .product-desc {
-		margin-top: 20px;
-		font-size: 14px;
+	margin-top: 20px;
+	font-size: 14px;
 }
 
 .confirm-photo {
-		height: 200px;
+	height: 200px;
 }
 
 .confirm-form label {
-		font-size: 18px;
+	font-size: 18px;
 }
 
 .thanks p {
-		font-size: 18px;
-		margin-bottom: 50px;
+	font-size: 18px;
+	margin-bottom: 50px;
 }
 
 .thanks h2 {
-		margin-bottom: 50px;
-		font-size: 40px;
+	margin-bottom: 50px;
+	font-size: 40px;
 }
 
 .thanks button {
-		margin-bottom: 50px;
+	margin-bottom: 50px;
+}
+
+/* Navigation bar style */
+.navigation_bar {
+	padding-top: 8em;
+}
+
+.navigation_bar ul {
+	display: table;
+	table-layout: fixed;
+	padding: 0;
+	overflow: hidden;
+	width: 100%;
+}
+
+.navigation_bar li {
+	display: table-cell;
+	text-align: center;
+	border: solid 2px;
+}
+
+.navigation_bar li a {
+	display: block;
+	color: black;
+	padding: 10px;
+	text-decoration: none;
+}
+
+.navigation_bar .active {
+	background-color: #4887E4;
+	color: white;
+}
+
+/* */
+
+.text-bold {
+	font-family: Raleway-Bold;
+}
+
+.table th {
+	text-align: center;
 }
