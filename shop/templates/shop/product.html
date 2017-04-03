@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container" style="margin-top: 100px">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="product-photo">
+        <img src="content/condor_bag.jpg">
+      </div>
+    </div>
+    <div class="col-md-6 product-div">
+      <div>
+        <h2>CONDOR 3 DAY ASSAULT PACK</h2>
+        <h2>RP 1.899.000</h2>
+        <div style="margin-top: 15px">
+          <span>Quantity: 30 | Sold: 5</span>
+        </div>
+      </div>
+      <br>
+      <a href="{% url 'shop:vote' pk %}"type="button" class="btn btn-default btn-c-learn text-white">
+        BUY
+      </a>
+      <h4 style="margin-top: 25px">Description</h4>
+      <p class="product-desc">
+        Made from rich leather with a natural grain this tote bag features raw edging and piping and drawstring fringed tassels for a stylish touch. Discreet logo on the outside but more prominent on the inside. Exterior features 1 main zipped compartment 2 adjustment tabs with tassels on sides and 1 detachable charm. Interior features 2 large pockets inside front 1 large zipped pocket inside back and 1 key attachment.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

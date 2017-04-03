@@ -1,0 +1,60 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 100px">
+  <div class="row">
+    <h2 class="text-center">PLEASE CONFIRM YOUR PURCHASE<h2>
+      <div class="col-xs-12">
+        <div class="form-group text-center">
+          <img src="content/condor_bag.jpg" class="confirm-photo">
+          <h4 style="color: red">CONDOR 3 DAY ASSAULT PACK</h4>
+          <h4 style="color: red">RP 1.899.000</h4>
+        </div>
+      </div>
+      <form class="confirm-form">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email Address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Name</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Address</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="exampleInputPassword1">City</label>
+            <select class="form-control">
+              <option>Bandung</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Province</label>
+            <select class="form-control">
+              <option>West Java</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Phone Number</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+        </div>
+        <div class="col-xs-12 text-right" style="margin-top: 15px; margin-bottom: 15px">
+          <button type="button" class="btn btn-default btn-c-learn text-white" style="background-color: red">
+            CANCEL
+          </button>
+          <button type="button" class="btn btn-default btn-c-learn text-white">
+            PURCHASE
+          </button>
+        </div>
+      </form>
+  </div>
+</div>
+{% endblock %}
