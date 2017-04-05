@@ -13,46 +13,40 @@
           <h4 style="color: red">{{ product.price }}</h4>
         </div>
       </div>
-      <form class="confirm-form">
+      <form class="confirm-form" action="{% url 'shop:confirm' product.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.product }}
         <div class="col-md-6">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email Address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            <label for="{{form.name.id_for_label}}">Name</label>
+            {{ form.name }}
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Name</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="{{form.email.id_for_label}}">Email Address</label>
+            {{ form.email }}
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Address</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="{{form.address.id_for_label}}">Address</label>
+            {{ form.address }}
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="exampleInputPassword1">City</label>
-            <select class="form-control">
-              <option>Bandung</option>
-            </select>
+            <label for="{{form.city.id_for_label}}">City</label>
+            {{ form.city }}
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Province</label>
-            <select class="form-control">
-              <option>West Java</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Phone Number</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="{{form.phone_number.id_for_label}}">Phone Number</label>
+            {{ form.phone_number }}
           </div>
         </div>
         <div class="col-xs-12 text-right" style="margin-top: 15px; margin-bottom: 15px">
           <a href="{% url 'shop:product' product.pk %}" type="button" class="btn btn-default btn-lg text-white" style="background-color: red">
             CANCEL
           </a>
-          <a href="{% url 'shop:confirm' product.pk %}" type="button" class="btn btn-default btn-lg text-white">
+          <button type="submit" class="btn btn-default btn-lg text-white">
             PURCHASE
-          </a>
+          </button>
         </div>
       </form>
   </div>
