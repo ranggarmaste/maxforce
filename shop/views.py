@@ -1,21 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import generic
+from .models import Product
 
 def index(request):
     template_name = 'shop/index.html'
     return render(request, template_name)
 
-def products(request):
+class ProductsView(generic.ListView):
     template_name = 'shop/products.html'
-    return render(request, template_name)
+    context_object_name = 'products'
 
-def product(request, pk):
+    def get_queryset(self):
+        return Product.objects.all
+
+class ProductView(generic.DetailView):
     template_name = 'shop/product.html'
-    return render(request, template_name)
+    model = Product
 
-def confirm(request, pk):
+class ConfirmView(generic.DetailView):
     template_name = 'shop/confirm.html'
-    return render(request, template_name)
+    model = Product
 
 def buy(request, pk):
     return HttpResponse("Ini harusnya proses form pembelian")
