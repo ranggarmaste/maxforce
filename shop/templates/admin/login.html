@@ -1,0 +1,34 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container pd-b-20 text-center" style="margin-top: 100px">
+  <h1>WELCOME ADMIN!</h1>
+  <div class="row pd-t-20 pd-b-20">
+    <form class="form-horizontal" method="POST" action="{% url 'shop:admin_login' %}?next={{next_url}}">
+      {% csrf_token %}
+      <div class="form-group">
+        <div class="col-md-4">
+          <label for="username"><h4>Username<span style="color: red;">*</span></h4></label>
+        </div>
+        <div class="col-md-6">
+          <input type="name" name="username" class="form-control" id="username" placeholder="Enter your username">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label for="password"><h4>Password<span style="color: red;">*</span></h4></label>
+        </div>
+        <div class="col-md-6">
+          <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-default btn-lg text-white">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

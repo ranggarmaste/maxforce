@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container pd-b-20 text-center" style="margin-top: 100px">
+  <h1>EDIT YOUR COMPANY'S PROFILE</h1>
+  <div class="row pd-t-20 pd-b-20">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-md-4">
+          <label for="description"><h4>About Us<span style="color: red;">*</span></h4></label>
+        </div>
+        <div class="col-md-6">
+          <textarea class="form-control" rows="30" placeholder="Change your description...." name="about" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required></textarea>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-default btn-lg text-white">UPDATE</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

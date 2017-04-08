@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
+from django.core.mail import send_mail
+
 from .models import Product, ProductOrder, ProductOrderForm
 
 def index(request):
@@ -29,8 +33,6 @@ def confirm(request, pk):
 
     return render(request, 'shop/confirm.html', { 'form': form, 'product' : product})
 
-# python manage.py makemigrations
-# python manage.py migrate
 def buy(request, pk):
     return HttpResponse("Ini harusnya proses form pembelian")
 
@@ -38,3 +40,31 @@ def thanks(request):
     email = request.GET['email']
     template_name = 'shop/thanks.html'
     return render(request, template_name, { 'email': email })
+
+def admin_login(request):
+    if request.user.is_authenticated:
+        return redirect(reverse('shop:admin_home'))
+    template_name = 'admin/login.html'
+    if request.method == 'GET':
+        next_url = request.GET['next']
+        return render(request, template_name, { 'next_url' : next_url } )
+    else:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            print(request.GET)
+            return redirect(request.GET['next'])
+        else:
+            return render(request, template_name)
+
+@login_required
+def admin_home(request):
+    template_name = 'admin/home.html'
+    return render(request, template_name)
+
+@login_required
+def admin_profile(request):
+    template_name = 'admin/profile.html'
+    return render(request, template_name)
