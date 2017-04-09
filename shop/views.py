@@ -45,8 +45,10 @@ def admin_login(request):
     if request.user.is_authenticated:
         return redirect(reverse('shop:admin_home'))
     template_name = 'admin/login.html'
+    next_url = request.GET.get('next')
+    if not next_url:
+        next_url = '/admin/'
     if request.method == 'GET':
-        next_url = request.GET['next']
         return render(request, template_name, { 'next_url' : next_url } )
     else:
         username = request.POST['username']
@@ -55,9 +57,9 @@ def admin_login(request):
         if user is not None:
             login(request, user)
             print(request.GET)
-            return redirect(request.GET['next'])
+            return redirect(next_url)
         else:
-            return render(request, template_name)
+            return render(request, template_name, { 'next_url' : next_url} )
 
 @login_required
 def admin_home(request):
