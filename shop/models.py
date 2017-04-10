@@ -3,7 +3,7 @@ from django.forms import ModelForm, TextInput, Select, HiddenInput
 
 class Article(models.Model):
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=50)
+    description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
