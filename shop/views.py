@@ -6,7 +6,7 @@ from django.views import generic
 from django.urls import reverse
 from django.core.mail import send_mail
 
-from .models import Product, ProductOrder, ProductOrderForm
+from .models import Product, ProductOrder, ProductOrderForm, Article
 
 def index(request):
     template_name = 'shop/index.html'
@@ -16,6 +16,11 @@ def products(request):
     template_name = 'shop/products.html'
     products = Product.objects.all
     return render(request, template_name, { 'products' : products })
+
+def articles(request):
+    template_name = 'shop/articles.html'
+    articles = Article.objects.all
+    return render(request, template_name, { 'articles' : articles})
 
 def product(request, pk):
     template_name = 'shop/product.html'

@@ -8,6 +8,7 @@ app_name = 'shop'
 urlpatterns = [
     # USER
     url(r'^$', views.index, name='index'),
+    url(r'^articles/$', views.articles, name='articles'),
     url(r'^products/$', views.products, name='products'),
     url(r'^products/(?P<pk>[0-9]+)/$', views.product, name='product'),
     url(r'^products/(?P<pk>[0-9]+)/confirm/$', views.confirm, name='confirm'),
