@@ -119,4 +119,6 @@ LOGIN_URL = '/admin/login/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+PROJECT_DIR = os.path.dirname(__file__)
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/')
 STATIC_URL = '/static/'
