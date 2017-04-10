@@ -25,7 +25,9 @@ SECRET_KEY = '4ygj#6e6%kovj77p#@$i*s(*w$ir8m^yb__13+kju%1qrpbq^c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'maxforcebeta.herokuapp.com'
+]
 
 
 # Application definition
