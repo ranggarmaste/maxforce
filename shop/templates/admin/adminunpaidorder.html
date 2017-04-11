@@ -1,0 +1,57 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<div class="navigation_bar">
+		<ul>
+			<li><a href="{% url 'shop:admin_unpaidorder' %}" class="active">Unpaid Order</a></li>
+			<li><a href="{% url 'shop:admin_paidorder' %}">Paid Order</a></li>
+			<li><a href="{% url 'shop:admin_historyorder' %}">Order History</a></li>
+		</ul>
+	</div>
+
+	<div class="container text-center pd-t-20 pd-b-20">
+		<h2>All Unpaid Order</h2>
+		
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered header-fixed">
+				<thead class="text-bold">
+					<tr>
+						<th>Product Name</th>
+						<th>Product Price</th>
+						<th>Date</th>
+						<th>Customer's Name</th>
+						<th>Customer's Email</th>
+						<th>Customer's Address</th>
+						<th>Customer's Phone</th>
+						<th>Choose Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for order in unpaidorder %}
+					<tr>
+						<td>{{order.product.name}}</td>
+						<td>{{order.product.price}}</td>
+						<td>{{order.product.created_at}}</td>
+						<td>{{order.name}}</td>
+						<td>{{order.email}}</td>
+						<td>{{order.address}}</td>
+						<td>{{order.phone_number}}</td>
+						<td>
+							<form method="POST" action="{% url 'shop:admin_unpaidorder' %}">
+							{% csrf_token %}
+							<input type="hidden" name="pk" value="{{order.pk}}">
+							<button class="btn btn-info" type=submit>
+								Already Paid
+							</button>
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

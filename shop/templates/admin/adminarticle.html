@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<div class="container pd-b-20 text-center" style="margin-top: 100px">
+		<h1>Add New Event</h1>
+		<div class="row pd-t-20 pd-b-20">
+			<form class="form-horizontal" method="POST" action="{% url 'shop:admin_article' %}">
+				{% csrf_token %}
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="title"><h4>Title<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						{{ form.title }}
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="description"><h4>Description<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						{{ form.description }}
+						<!-- <textarea class="form-control" rows="20" placeholder="Tell your event..." name="event" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required></textarea> -->
+					</div>
+				</div>
+				<div class="form-group text-center">        
+					<button type="submit" class="btn btn-default btn-lg text-white">POST THIS</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}
