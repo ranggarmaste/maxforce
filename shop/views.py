@@ -18,13 +18,13 @@ ig_client_secret = "16fd29644c274603bf08a4df517c7a96"
 from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About
 
 def get_facebook():
-    r = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '/posts?access_token=' + fb_access_token)
-    resp = r.json()['data']
-    for i in range(len(resp)):
-        post_id = resp[i]['id']
+    info = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '?access_token=' + fb_access_token).json()
+    data = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '/posts?access_token=' + fb_access_token).json()['data']
+    for i in range(len(data)):
+        post_id = data[i]['id']
         r_post = requests.get('https://graph.facebook.com/v2.8/' + post_id + '/likes?access_token=' + fb_access_token)
-        resp[i]['likes'] = len(r_post.json()['data'])
-    return resp
+        data[i]['likes'] = len(r_post.json()['data'])
+    return { 'info' : info, 'data' : data, 'picture' : 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/17861963_1487341941339168_769261364304292733_n.jpg?oh=f2f6770f70b8acdb995d39a92f5f55c9&oe=59854247'}
 
 def index(request):
     template_name = 'shop/index.html'
