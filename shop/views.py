@@ -6,7 +6,7 @@ from django.views import generic
 from django.urls import reverse
 from django.core.mail import send_mail
 
-from .models import Product, ProductOrder, ProductOrderForm, Article
+from .models import Product, ProductOrder, ProductOrderForm, Article, ArticleForm
 
 def index(request):
     template_name = 'shop/index.html'
@@ -75,3 +75,34 @@ def admin_home(request):
 def admin_profile(request):
     template_name = 'admin/profile.html'
     return render(request, template_name)
+
+@login_required
+def admin_article(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        form.save()
+        return redirect('/admin/')
+    # else requestnya GET
+    form = ArticleForm()
+    template_name = 'admin/adminarticle.html'
+    return render(request, template_name, {'form' : form})
+
+@login_required
+def admin_product(request):
+    template_name = 'admin/adminproduct.html'
+    return render(request, template_name)
+
+@login_required
+def admin_unpaidorder(request):
+    if request.method == "POST":
+        pk = request.POST["pk"]
+        order = ProductOrder.objects.get(pk=pk)
+        order.status = 1
+        order.save()
+        return redirect('/admin/unpaidorder/')
+
+    template_name = 'admin/adminunpaidorder.html'
+    UnpaidOrder = ProductOrder.objects.all().filter(status = 0)
+    return render(request, template_name, { 'unpaidorder' : UnpaidOrder})
+    
+

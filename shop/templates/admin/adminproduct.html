@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<div class="container pd-b-20 text-center" style="margin-top: 100px">
+		<h1>Add New Product</h1>
+		<div class="row pd-t-20 pd-b-20">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="name"><h4>Name<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="name" placeholder="Enter product's name">
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="description"><h4>Description<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						<textarea class="form-control" rows="10" placeholder="Enter product's description" name="event" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="price"><h4>Price (IDR)<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						<input type="text" class="form-control" id="price" placeholder="Enter product's price">
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<div class="col-md-4">
+						<label for="Photo"><h4>Photo<span style="color: red;">*</span></h4></label>
+					</div>
+					<div class="col-md-6">
+						<input type="file" id="photo">
+					</div>
+				</div>
+				<div class="form-group text-center">        
+					<button type="submit" class="btn btn-default btn-lg text-white">SAVE PRODUCT</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+{% endblock %}

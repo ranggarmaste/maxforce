@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm, TextInput, Select, HiddenInput
+from django.forms import ModelForm, TextInput, Select, HiddenInput, Textarea
 
 class Article(models.Model):
     title = models.CharField(max_length=50)
@@ -34,7 +34,7 @@ class ProductOrder(models.Model):
     email = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
-    status = models.BooleanField(default=False)
+    status = models.IntegerField(default=0) #0 = unpaid, 1 = paid, 2 = history
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -50,3 +50,16 @@ class ProductOrderForm(ModelForm):
             'email': TextInput(attrs={'class': 'form-control'}),
             'phone_number': TextInput(attrs={'class': 'form-control'}),
         }
+
+class ArticleForm(ModelForm):
+    class Meta:
+        model = Article
+        fields = ['title', 'description']
+        widgets = {
+            'title': TextInput(attrs={'class': 'form-control'}),
+            'description': Textarea(attrs={'class': 'form-control', 'placeholder' : 'Fill a description...'}), 
+        }
+
+# class AddProductForm(ModelForm):
+#     class Meta:
+
