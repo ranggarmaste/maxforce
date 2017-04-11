@@ -7,16 +7,31 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from instagram.client import InstagramAPI
 
-access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
-client_secret = "16fd29644c274603bf08a4df517c7a96"
+import requests
+import json
+
+fb_access_token = "EAAEApfZASErUBANlOXV3n5UTM57HQsAwX8tkOkRTfOdXV9RZCdqZAYEZAlywoEyI1wGRBYxEV2mhZCLTqdTIoPT0ZB8lOSUQW8pZCv5JX3CuNbJenSb5AqZCFt3NgZCQxdVQmBHKdZBzcrXehNT1d6S1JPfE8PWF9UZAkUZD"
+fb_page_id = "1486459264760769"
+ig_access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
+ig_client_secret = "16fd29644c274603bf08a4df517c7a96"
 
 from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About
 
+def get_facebook():
+    r = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '/posts?access_token=' + fb_access_token)
+    resp = r.json()['data']
+    for i in range(len(resp)):
+        post_id = resp[i]['id']
+        r_post = requests.get('https://graph.facebook.com/v2.8/' + post_id + '/likes?access_token=' + fb_access_token)
+        resp[i]['likes'] = len(r_post.json()['data'])
+    return resp
+
 def index(request):
     template_name = 'shop/index.html'
-    api = InstagramAPI(access_token=access_token, client_secret=client_secret)
+    api = InstagramAPI(access_token=ig_access_token, client_secret=ig_client_secret)
     recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
-    return render(request, template_name, {'recent_media' : recent_media })
+    facebook_data = get_facebook()
+    return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data })
 
 def about(request):
     template_name = 'shop/about.html'
