@@ -16,9 +16,7 @@ def index(request):
     template_name = 'shop/index.html'
     api = InstagramAPI(access_token=access_token, client_secret=client_secret)
     recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
-    for media in recent_media:
-        print(media.caption.text)
-    return render(request, template_name)
+    return render(request, template_name, {'recent_media' : recent_media })
 
 def about(request):
     template_name = 'shop/about.html'
