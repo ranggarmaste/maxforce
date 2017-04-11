@@ -25,7 +25,10 @@ SECRET_KEY = '4ygj#6e6%kovj77p#@$i*s(*w$ir8m^yb__13+kju%1qrpbq^c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'maxforcebeta.herokuapp.com'
+]
 
 
 # Application definition
@@ -119,4 +122,6 @@ LOGIN_URL = '/admin/login/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+PROJECT_DIR = os.path.dirname(__file__)
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/')
 STATIC_URL = '/static/'

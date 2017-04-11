@@ -5,11 +5,19 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.core.mail import send_mail
+from instagram.client import InstagramAPI
+
+access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
+client_secret = "16fd29644c274603bf08a4df517c7a96"
 
 from .models import Product, ProductOrder, ProductOrderForm, Article, ArticleForm, About
 
 def index(request):
     template_name = 'shop/index.html'
+    api = InstagramAPI(access_token=access_token, client_secret=client_secret)
+    recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
+    for media in recent_media:
+        print(media.caption.text)
     return render(request, template_name)
 
 def about(request):

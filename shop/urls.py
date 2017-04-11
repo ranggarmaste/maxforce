@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 
 from . import views
 
@@ -22,4 +24,4 @@ urlpatterns = [
     url(r'^admin/unpaidorder/$', views.admin_unpaidorder, name='admin_unpaidorder'),
     url(r'^admin/paidorder/$', views.admin_paidorder, name='admin_paidorder'),
     url(r'^admin/historyorder/$', views.admin_historyorder, name='admin_historyorder')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
