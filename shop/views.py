@@ -6,11 +6,16 @@ from django.views import generic
 from django.urls import reverse
 from django.core.mail import send_mail
 
-from .models import Product, ProductOrder, ProductOrderForm, Article, ArticleForm
+from .models import Product, ProductOrder, ProductOrderForm, Article, ArticleForm, About
 
 def index(request):
     template_name = 'shop/index.html'
     return render(request, template_name)
+
+def about(request):
+    template_name = 'shop/about.html'
+    about = About.objects.all()[0]
+    return render(request, template_name, {'about' : about})
 
 def products(request):
     template_name = 'shop/products.html'

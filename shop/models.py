@@ -17,6 +17,9 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class About(models.Model):
+    description = models.TextField()
+
 class City(models.Model):
     name = models.CharField(max_length=50)
     province = models.CharField(max_length=50)
