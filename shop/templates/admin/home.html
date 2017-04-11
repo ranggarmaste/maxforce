@@ -10,10 +10,10 @@
       <a href="#" class="btn btn-default text-white btn-lg btn-block btn-huge">CUSTOMIZE YOUR PRODUCT</a>
     </div>
     <div class="col-md-8 col-md-offset-2 pd-t-20 pd-b-20">
-      <a href="#" class="btn btn-info text-white btn-lg btn-block btn-huge">CUSTOMIZE YOUR ORDER</a>
+      <a href="{% url 'shop:admin_unpaidorder' %}" class="btn btn-info text-white btn-lg btn-block btn-huge">CUSTOMIZE YOUR ORDER</a>
     </div>
     <div class="col-md-8 col-md-offset-2 pd-t-20 pd-b-20">
-      <a href="#" class="btn btn-warning text-white btn-lg btn-block btn-huge">CUSTOMIZE NEWEST EVENT</a>
+      <a href="{% url 'shop:admin_article' %}" class="btn btn-warning text-white btn-lg btn-block btn-huge">CUSTOMIZE NEWEST EVENT</a>
     </div>
     <div class="col-md-8 col-md-offset-2 pd-t-20 pd-b-20">
       <a href="{% url 'shop:admin_profile' %}" class="btn btn-success text-white btn-lg btn-block btn-huge">EDIT COMPANY'S PROFILE</a>

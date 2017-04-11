@@ -1,18 +1,17 @@
 {% extends 'shop/base.html' %}
 {% load static %}
-
 {% block content %}
 
 <div class="navigation_bar">
 	<ul>
 		<li><a href="{% url 'shop:admin_unpaidorder' %}">Unpaid Order</a></li>
-		<li><a href="{% url 'shop:admin_paidorder' %}" class="active">Paid Order</a></li>
-		<li><a href="{% url 'shop:admin_historyorder' %}">Order History</a></li>
+		<li><a href="{% url 'shop:admin_paidorder' %}">Paid Order</a></li>
+		<li><a href="{% url 'shop:admin_historyorder' %}" class="active">Order History</a></li>
 	</ul>
 </div>
 
 <div class="container text-center pd-t-20 pd-b-20">
-	<h2>All Paid Order</h2>
+	<h2>All Order History</h2>
 	<div class="table-responsive">
 		<table class="table table-striped table-bordered header-fixed">
 			<thead class="text-bold">
@@ -24,11 +23,10 @@
 					<th>Customer's Email</th>
 					<th>Customer's Address</th>
 					<th>Customer's Phone</th>
-					<th>Choose Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for order in paidorder %}
+				{% for order in historyorder %}
 				<tr>
 					<td>{{order.product.name}}</td>
 					<td>{{order.product.price}}</td>
@@ -37,15 +35,6 @@
 					<td>{{order.email}}</td>
 					<td>{{order.address}}</td>
 					<td>{{order.phone_number}}</td>
-					<td>
-						<form method = "POST" action="{% url 'shop:admin_paidorder' %}">
-							{% csrf_token %}
-							<input type="hidden" name="pk" value={{ order.pk }}>
-							<button class="btn btn-success" type="submit">
-								Already Sent
-							</button>
-						</form>
-					</td>
 				</tr>
 				{% endfor %}
 			</tbody>

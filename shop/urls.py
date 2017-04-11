@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^admin/product/$', views.admin_product, name='admin_product'),
     url(r'^admin/article/$', views.admin_article, name='admin_article'),
     url(r'^admin/unpaidorder/$', views.admin_unpaidorder, name='admin_unpaidorder'),
-    url(r'^admin/paidorder/$', views.admin_article, name='admin_article')
+    url(r'^admin/paidorder/$', views.admin_paidorder, name='admin_paidorder'),
+    url(r'^admin/historyorder/$', views.admin_historyorder, name='admin_historyorder')
 ]

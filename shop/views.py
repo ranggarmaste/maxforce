@@ -104,5 +104,24 @@ def admin_unpaidorder(request):
     template_name = 'admin/adminunpaidorder.html'
     UnpaidOrder = ProductOrder.objects.all().filter(status = 0)
     return render(request, template_name, { 'unpaidorder' : UnpaidOrder})
+
+@login_required
+def admin_paidorder(request):
+    if request.method == "POST":
+        pk = request.POST["pk"]
+        order = ProductOrder.objects.get(pk=pk)
+        order.status = 2
+        order.save()
+        return redirect('/admin/paidorder')
+
+    template_name = 'admin/adminpaidorder.html'
+    paidorder = ProductOrder.objects.all().filter(status = 1)
+    return render(request, template_name, {'paidorder' : paidorder})
+
+@login_required
+def admin_historyorder(request):
+    template_name = 'admin/adminhistoryorder.html'
+    historyorder = ProductOrder.objects.all().filter(status = 2)
+    return render(request, template_name, {'historyorder' : historyorder})
     
 

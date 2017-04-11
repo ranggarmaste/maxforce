@@ -5,9 +5,9 @@
 
 	<div class="navigation_bar">
 		<ul>
-			<li><a href="adminUnpaidOrder.html" class="active">Unpaid Order</a></li>
-			<li><a href="adminPaidOrder.html">Paid Order</a></li>
-			<li><a href="adminHistoryOrder.html">Order History</a></li>
+			<li><a href="{% url 'shop:admin_unpaidorder' %}" class="active">Unpaid Order</a></li>
+			<li><a href="{% url 'shop:admin_paidorder' %}">Paid Order</a></li>
+			<li><a href="{% url 'shop:admin_historyorder' %}">Order History</a></li>
 		</ul>
 	</div>
 
