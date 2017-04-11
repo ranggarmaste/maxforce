@@ -23,14 +23,17 @@
   </div>
 </div>
 
-<div class="carousel-content">
+<div class="carousel-content" id="#tes">
   <div class="container">
     <div class="text-white text-center">
       <h1> EXPLORE YOUR ADVENTURE </h1>
       <p>The biggest adventure you can take is to live the life of your dreams. <br>Read our stories here</p>
-      <button type="button" class="btn btn-default btn-c-learn text-white">
-        LEARN MORE
-      </button>
+      <a href="#about" class="page-scroll">
+        <button type="button" class="btn btn-default btn-c-learn text-white">
+          LEARN MORE
+        </button>
+      </a>
+      
     </div>
   </div>
 </div>
@@ -48,9 +51,11 @@
     <div class="text-about pd-t-10 pd-b-10">
       Perusahaan ini berdiri pada tanggal 25 november 2005 di Jakarta dengan nama PT Keen Indonesia, atau yang dikenal sebagai Keen Adventure. Keen Adventure adalah perusahaan yang bergerak di bidang retail peralatan berpetualang. Perusahaan ini didirikan tahun 2002 oleh Arif Tan. Kata keen sendiri di dapat dari kenes yang artinya lincah dan smart yang ditujukan ke anak-anak kecil. Akhirnya, diambillah kata keen adventure yang berarti petualangan yang menyenangkan.
     </div>
-    <button type="button" class="btn btn-default btn-lg text-white">
-      READ MORE
-    </button>
+    <a href="{% url 'shop:about' %}">
+      <button type="button" class="btn btn-default btn-lg text-white">
+        READ MORE
+      </button>
+    </a>
   </div>
 </div>
 </div>
@@ -103,51 +108,49 @@
     </div>
     <div class="container text-center">
       <div class="row mg-t-20 pd-t-20 pd-b-20">
-        <div class="col-md-3 col-xs-6">
-          <a href="#" class=""><img class="img-responsive" src="{% static 'shop/content/ig1.png' %}" alt>
-          </a>
-        </div>
-        <div class="col-md-3 col-xs-6">
-          <a href="#" class=""><img class="img-responsive" src="{% static 'shop/content/ig2.png' %}" alt>
-          </a>
-        </div>
-        <div class="col-md-3 col-xs-6">
-          <a href="#" class=""><img class="img-responsive" src="{% static 'shop/content/ig3.png' %}" alt>
-          </a>
-        </div>
-        <div class="col-md-3 col-xs-6">
-          <a href="#" class=""><img class="img-responsive" src="{% static 'shop/content/ig4.png' %}" alt>
-          </a>
-        </div>
+        {% for media in recent_media %}
+        <div class="col-md-3 col-xs-6 grid-top pd-t-20 pd-b-20">
+         <a href="#" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="{{ media.images.thumbnail.url }}" alt>
+          <div class="b-wrapper">
+            <div class="b-animate b-from-left b-delay03 ">
+              <span><h5>{{ media.caption.text }} </h5>
+              </span> 
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<div class="container text-center pd-b-20">
+  <div class="text-title pd-t-20 pd-b-40">
+    Our Latest Product
+    <div class="group-shape">
+      <div id="element1">  <hr></div>
+      <div id="element2">  <div class="diamond-small"></div> </div>
+      <div id="element3">  <hr> </div>
+    </div>
+  </div>
+  <div class="row pd-t-20 pd-b-40">
+    <div class="col-md-4">
+      <div class="circle inner">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="circle inner">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="circle inner">
       </div>
     </div>
   </div>
-  <div class="container text-center pd-b-20">
-    <div class="text-title pd-t-20 pd-b-40">
-      Our Latest Product
-      <div class="group-shape">
-        <div id="element1">  <hr></div>
-        <div id="element2">  <div class="diamond-small"></div> </div>
-        <div id="element3">  <hr> </div>
-      </div>
-    </div>
-    <div class="row pd-t-20 pd-b-40">
-      <div class="col-md-4">
-        <div class="circle inner">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="circle inner">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="circle inner">
-        </div>
-      </div>
-    </div>
-    <button type="button" class="btn btn-default btn-lg text-white">
-      SEE MORE
-    </button>
-  </div>
+  <button type="button" class="btn btn-default btn-lg text-white">
+    SEE MORE
+  </button>
+</div>
 </div>
 {% endblock %}
