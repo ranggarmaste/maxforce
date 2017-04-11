@@ -10,7 +10,7 @@ from instagram.client import InstagramAPI
 access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
 client_secret = "16fd29644c274603bf08a4df517c7a96"
 
-from .models import Product, ProductOrder, ProductOrderForm, Article, ArticleForm, About
+from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About
 
 def index(request):
     template_name = 'shop/index.html'
@@ -136,5 +136,16 @@ def admin_historyorder(request):
     template_name = 'admin/adminhistoryorder.html'
     historyorder = ProductOrder.objects.all().filter(status = 2)
     return render(request, template_name, {'historyorder' : historyorder})
-    
 
+@login_required
+def admin_add_product(request):
+    template_name = 'admin/admin_add_product.html'
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('shop:admin_home'))
+        return render(request, template_name, { 'form' : form })
+
+    form = ProductForm(initial={'sold': 10})
+    return render(request, template_name, { 'form' : form })

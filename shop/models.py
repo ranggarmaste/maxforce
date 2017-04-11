@@ -13,7 +13,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=0)
     sold = models.IntegerField(default=0)
     description = models.CharField(max_length=200)
-    url_photo = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='products', default='products/none.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -60,9 +60,16 @@ class ArticleForm(ModelForm):
         fields = ['title', 'description']
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
-            'description': Textarea(attrs={'class': 'form-control', 'placeholder' : 'Fill a description...'}), 
+            'description': Textarea(attrs={'class': 'form-control', 'rows': '20', 'placeholder' : 'Fill a description...'}),
         }
 
-# class AddProductForm(ModelForm):
-#     class Meta:
-
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'quantity', 'description', 'photo']
+        widgets = {
+            'name': TextInput(attrs={'class': 'form-control'}),
+            'price': TextInput(attrs={'class': 'form-control'}),
+            'quantity': TextInput(attrs={'class': 'form-control'}),
+            'description': Textarea(attrs={'class': 'form-control'})
+        }
