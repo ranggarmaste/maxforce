@@ -17,7 +17,6 @@ urlpatterns = [
     # ADMIN
     url(r'^admin/$', views.admin_home, name='admin_home'),
     url(r'^admin/login/$', views.admin_login, name='admin_login'),
-    url(r'^admin/profile/$', views.admin_profile, name='admin_profile')
     url(r'^admin/profile/$', views.admin_profile, name='admin_profile'),
     url(r'^admin/product/$', views.admin_product, name='admin_product'),
     url(r'^admin/article/$', views.admin_article, name='admin_article'),
