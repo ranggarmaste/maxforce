@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^about/$', views.about, name='about'),
     url(r'^articles/$', views.articles, name='articles'),
+    url(r'^articles/(?P<pk>[0-9]+)/$', views.article, name='article'),
     url(r'^products/$', views.products, name='products'),
     url(r'^products/(?P<pk>[0-9]+)/$', views.product, name='product'),
     url(r'^products/(?P<pk>[0-9]+)/confirm/$', views.confirm, name='confirm'),
