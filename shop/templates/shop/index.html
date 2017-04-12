@@ -75,20 +75,22 @@
       {% for article in latest_articles %}
       <div class="col-md-4">
         <div class="back-box">
-            <div class="prod-text">
-              <h2 class="text-uppercase text-bold">{{ article.title }}</h2>
-              <p>{{ article.description|safe|truncatewords:"40"|linebreaks }}</p>
-              <a href="{% url 'shop:article' article.pk %}" type="button" class="btn btn-default btn-lg text-white">
-                Read More
-              </a>
-            </div>
+          <div class="prod-text">
+            <h2 class="text-uppercase text-bold">{{ article.title }}</h2>
+            <p>{{ article.description|safe|truncatewords:"30"|linebreaks }}</p>
+            <a href="{% url 'shop:article' article.pk %}" type="button" class="btn btn-default btn-lg text-white">
+              Read More
+            </a>
           </div>
+        </div>
       </div>
       {% endfor %}
     </div>
-    <button type="button" class="btn btn-default btn-lg text-white">
-      SEE OTHER BLOG
-    </button>
+    <div class="pd-t-20 pd-b-20">
+      <a href="{% url 'shop:articles' %}" type="button" class="btn btn-default btn-lg text-white">
+        See Other Blogs
+      </a>
+    </div>
   </div>
 
   <div class="cont-white">
@@ -127,19 +129,19 @@
 
       {% for data in facebook_data.data %}
       <div class="col-md-3 col-xs-6 grid-top">
-          <div class="facebook-container row">
-            <div class="col-md-3 col-xs-6 pd-t-20 pd-b-20">
-              <img src={{facebook_data.picture }}>
-            </div>
-            <div class="col-md-9 col-xs-6  pd-t-20 pd-b-20">
-              {{ facebook_data.info.name }}
-              <br>
-              {{ data.created_time }}
-            </div>
-            <div class="facebook-message">
-                  {{ data.message }} {{ data.story }}
-            </div>
+        <div class="facebook-container row">
+          <div class="col-md-3 col-xs-6 pd-t-20 pd-b-20">
+            <img src={{facebook_data.picture }}>
           </div>
+          <div class="col-md-9 col-xs-6  pd-t-20 pd-b-20">
+            {{ facebook_data.info.name }}
+            <br>
+            {{ data.created_time }}
+          </div>
+          <div class="facebook-message">
+            {{ data.message }} {{ data.story }}
+          </div>
+        </div>
 
       </div>
       {% endfor %}
@@ -159,14 +161,17 @@
   
   <div class="row pd-t-20 pd-b-40">
     {% for product in latest_products %}
-    <div class="col-md-4">
-      <img src="{{ product.photo.url }}" alt="">
+    <div class="col-md-4 product-thumbnail">
+      <a href="{% url 'shop:product' product.pk %}">
+           <img src="{{ product.photo.url }}" class = "img-full" alt="">
+      </a>
+      
     </div>
     {% endfor %}
   </div>
-  <button type="button" class="btn btn-default btn-lg text-white">
-    SEE MORE
-  </button>
+  <a href="{% url 'shop:products' %}" type="button" class="btn btn-default btn-lg text-white">
+    See Other Products
+  </a>
 </div>
 </div>
 {% endblock %}

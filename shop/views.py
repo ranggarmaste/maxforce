@@ -40,10 +40,11 @@ def index(request):
     # for a in about:
     #   {{ a.description }}
     latest_articles = Article.objects.all().order_by('-created_at')[:3]
-    api = InstagramAPI(access_token=ig_access_token, client_secret=ig_client_secret)
-    recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
-    facebook_data = get_facebook()
-    return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data, 'latest_products' : latest_products, 'latest_articles' : latest_articles })
+    # api = InstagramAPI(access_token=ig_access_token, client_secret=ig_client_secret)
+    # recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
+    # facebook_data = get_facebook()
+    # return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data, 'latest_products' : latest_products, 'latest_articles' : latest_articles })
+    return render(request, template_name, {'latest_products' : latest_products, 'latest_articles' : latest_articles })
 
 def about(request):
     template_name = 'shop/about.html'
@@ -142,6 +143,7 @@ def admin_unpaidorder(request):
     template_name = 'admin/adminunpaidorder.html'
     UnpaidOrder = ProductOrder.objects.all().filter(status = 0)
     return render(request, template_name, { 'unpaidorder' : UnpaidOrder})
+
 
 @login_required
 def admin_paidorder(request):
