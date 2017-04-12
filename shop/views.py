@@ -10,6 +10,9 @@ from django.utils.dateparse import parse_datetime
 
 import requests
 import json
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 
 fb_access_token = "EAAEApfZASErUBANlOXV3n5UTM57HQsAwX8tkOkRTfOdXV9RZCdqZAYEZAlywoEyI1wGRBYxEV2mhZCLTqdTIoPT0ZB8lOSUQW8pZCv5JX3CuNbJenSb5AqZCFt3NgZCQxdVQmBHKdZBzcrXehNT1d6S1JPfE8PWF9UZAkUZD"
 fb_page_id = "1486459264760769"
@@ -17,6 +20,29 @@ ig_access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
 ig_client_secret = "16fd29644c274603bf08a4df517c7a96"
 
 from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About, AboutForm
+
+def send_email(order):
+    sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("ranggarmaste@gmail.com")
+    to_email = Email(order.email)
+    subject = '[Maxforce Order #' + str(order.pk) + '] - Payment Confirmation'
+    body = 'Dear, ' + order.name + '<br><br>'
+    body += 'Here is the detail of your order:<br>'
+    body += 'Product: ' + order.product.name + '<br>'
+    body += 'Price: ' + str(order.product.price) + '<br>'
+    body += 'Delivery Price: ' + str(order.city.delivery_price) + '<br>'
+    body += '<b>TOTAL PRICE: ' + str(order.product.price + order.city.delivery_price) + '</b><br><br>'
+    body += 'Please pay the given total price to the following bank account:<br>'
+    body += 'BNI: 123456789 a/n Sumiah Barbara<br><br>'
+    body += 'After you have paid, please reply this email with the attachment of your payment proof<br><br>'
+    body += 'Thank you very much<br><br>'
+    body += '--Maxforce--<br>'
+    content = Content("text/html", body)
+    mail = Mail(from_email, subject, to_email, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
 
 def parse_date(data):
     for datum in data:
@@ -39,7 +65,6 @@ def index(request):
     latest_articles = Article.objects.all().order_by('-created_at')[:3]
     api = InstagramAPI(access_token=ig_access_token, client_secret=ig_client_secret)
     recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
-    print(recent_media[0].__dict__)
     facebook_data = get_facebook()
     return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data, 'latest_products' : latest_products, 'latest_articles' : latest_articles })
 
@@ -71,7 +96,8 @@ def product(request, pk):
 def confirm(request, pk):
     if request.method == 'POST':
         form = ProductOrderForm(request.POST)
-        form.save()
+        order = form.save()
+        send_email(order)
         return HttpResponseRedirect(reverse('shop:thanks') + '?email=' + form.cleaned_data['email'])
     else:
         product = Product.objects.get(pk=pk)
