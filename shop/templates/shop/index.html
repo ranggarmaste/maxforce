@@ -70,22 +70,24 @@
         <div id="element3">  <hr> </div>
       </div>
     </div>
+    
     <div class="row pd-t-20 pd-b-40">
+      {% for article in latest_articles %}
       <div class="col-md-4">
-        <div class="circle inner">
-        </div>
+        <div class="back-box">
+            <div class="prod-text">
+              <h2 class="text-uppercase text-bold">{{ article.title }}</h2>
+              <p>{{ article.description|safe|truncatewords:"40"|linebreaks }}</p>
+              <a href="{% url 'shop:article' article.pk %}" type="button" class="btn btn-default btn-lg text-white">
+                Read More
+              </a>
+            </div>
+          </div>
       </div>
-      <div class="col-md-4">
-        <div class="circle inner">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="circle inner">
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <button type="button" class="btn btn-default btn-lg text-white">
-      SEE MORE
+      SEE OTHER BLOG
     </button>
   </div>
 
@@ -110,7 +112,7 @@
       <div class="row mg-t-20 pd-t-20 pd-b-20">
         {% for media in recent_media %}
         <div class="col-md-3 col-xs-6 grid-top pd-t-20 pd-b-20">
-         <a href="#" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="{{ media.images.thumbnail.url }}" alt>
+         <a href="#" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="{{ media.images.standard_resolution.url }}" alt>
           <div class="b-wrapper">
             <div class="b-animate b-from-left b-delay03 ">
               <span><h5>{{ media.caption.text }} </h5>
@@ -134,19 +136,13 @@
       <div id="element3">  <hr> </div>
     </div>
   </div>
+  
   <div class="row pd-t-20 pd-b-40">
+    {% for product in latest_products %}
     <div class="col-md-4">
-      <div class="circle inner">
-      </div>
+      <img src="{{ product.photo.url }}" alt="">
     </div>
-    <div class="col-md-4">
-      <div class="circle inner">
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="circle inner">
-      </div>
-    </div>
+    {% endfor %}
   </div>
   <button type="button" class="btn btn-default btn-lg text-white">
     SEE MORE

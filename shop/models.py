@@ -73,3 +73,11 @@ class ProductForm(ModelForm):
             'quantity': TextInput(attrs={'class': 'form-control'}),
             'description': Textarea(attrs={'class': 'form-control'})
         }
+
+class AboutForm(ModelForm):
+    class Meta:
+        model = About
+        fields = ['description']
+        widgets = {
+            'description': Textarea(attrs={'class': 'form-control', 'rows': '30', 'placeholder': 'Change the profile....'}),
+        }

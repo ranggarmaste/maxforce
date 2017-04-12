@@ -15,7 +15,7 @@ fb_page_id = "1486459264760769"
 ig_access_token = "239869696.9761424.59e80d7603964610b7648bbb670443da"
 ig_client_secret = "16fd29644c274603bf08a4df517c7a96"
 
-from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About
+from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About, AboutForm
 
 def get_facebook():
     info = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '?access_token=' + fb_access_token).json()
@@ -28,10 +28,15 @@ def get_facebook():
 
 def index(request):
     template_name = 'shop/index.html'
+    latest_products = Product.objects.all().order_by('-created_at')[:3]
+    # about = About.objects.all()[:1]
+    # for a in about:
+    #   {{ a.description }}
+    latest_articles = Article.objects.all().order_by('-created_at')[:3]
     api = InstagramAPI(access_token=ig_access_token, client_secret=ig_client_secret)
     recent_media, next_ = api.user_recent_media(user_id="239869696", count=10)
     facebook_data = get_facebook()
-    return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data })
+    return render(request, template_name, {'recent_media' : recent_media, 'facebook_data' : facebook_data, 'latest_products' : latest_products, 'latest_articles' : latest_articles })
 
 def about(request):
     template_name = 'shop/about.html'
@@ -100,11 +105,6 @@ def admin_login(request):
 @login_required
 def admin_home(request):
     template_name = 'admin/home.html'
-    return render(request, template_name)
-
-@login_required
-def admin_profile(request):
-    template_name = 'admin/profile.html'
     return render(request, template_name)
 
 @login_required
@@ -192,3 +192,20 @@ def admin_add_product(request):
 
     form = ProductForm(initial={'sold': 10})
     return render(request, template_name, { 'form' : form })
+
+@login_required
+def admin_profile(request):
+    template_name = 'admin/profile.html'
+    profile = About.objects.all()[0]
+    print("HEHEHE")
+    print(profile.description)
+    if request.method == "POST":
+        form = AboutForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('shop:about'))
+        return render(request, template_name)
+    
+    form = AboutForm(instance=profile)
+    return render(request, template_name, { 'form' : form, 'about' : about})
+

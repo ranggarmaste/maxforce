@@ -8,15 +8,13 @@
     {% for product in products %}
     <div class="col-md-3 col-sm-4 mg-b-20">
       <div class="product-thumbnail">
-        <a href="product.html">
+        <a href="{{ product.pk }}">
           <img class="img-responsive img-full" src="{{ product.photo.url }}">
         </a>
       </div>
-      <a href="product.html">
         <a href="{{ product.pk }}" type="button" class="btn btn-default btn-lg text-white">
           Look Detail
         </a>
-      </a>
     </div>
     {% endfor %}
   </div>
