@@ -24,5 +24,8 @@ urlpatterns = [
     url(r'^admin/unpaidorder/$', views.admin_unpaidorder, name='admin_unpaidorder'),
     url(r'^admin/paidorder/$', views.admin_paidorder, name='admin_paidorder'),
     url(r'^admin/historyorder/$', views.admin_historyorder, name='admin_historyorder'),
-    url(r'^admin/products/add$', views.admin_add_product, name='admin_add_product')
+    url(r'^admin/products/$', views.admin_product, name='admin_product'),
+    url(r'^admin/products/add/$', views.admin_add_product, name='admin_add_product'),
+    url(r'^admin/products/(?P<pk>[0-9]+)/edit/$', views.admin_edit_product, name='admin_edit_product'),
+    url(r'^admin/products/(?P<pk>[0-9]+)/delete/$', views.admin_delete_product, name='admin_delete_product'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
@@ -151,13 +151,38 @@ def admin_historyorder(request):
     return render(request, template_name, {'historyorder' : historyorder})
 
 @login_required
+def admin_product(request):
+    template_name = 'admin/admin_product.html'
+    products = Product.objects.all()
+    return render(request, template_name, { 'products' : products })
+
+@login_required
+def admin_edit_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('shop:admin_product'))
+
+    template_name = 'admin/admin_edit_product.html'
+    form = ProductForm(instance=product)
+    return render(request, template_name, { 'form' : form, 'product' : product })
+
+@login_required
+def admin_delete_product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    product.delete()
+    return redirect(reverse('shop:admin_product'))
+
+@login_required
 def admin_add_product(request):
     template_name = 'admin/admin_add_product.html'
     if request.method == "POST":
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect(reverse('shop:admin_home'))
+            return redirect(reverse('shop:admin_product'))
         return render(request, template_name, { 'form' : form })
 
     form = ProductForm(initial={'sold': 10})
