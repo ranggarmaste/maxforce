@@ -33,7 +33,7 @@
           LEARN MORE
         </button>
       </a>
-      
+
     </div>
   </div>
 </div>
@@ -110,20 +110,40 @@
       <div class="row mg-t-20 pd-t-20 pd-b-20">
         {% for media in recent_media %}
         <div class="col-md-3 col-xs-6 grid-top pd-t-20 pd-b-20">
-         <a href="#" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src="{{ media.images.thumbnail.url }}" alt>
+         <a href="#" class="b-link-stripe b-animate-go thickbox text-center"><img class="img-responsive" src="{{ media.images.thumbnail.url }}" alt>
           <div class="b-wrapper">
             <div class="b-animate b-from-left b-delay03 ">
               <span><h5>{{ media.caption.text }} </h5>
-              </span> 
+              </span>
             </div>
           </div>
         </a>
       </div>
       {% endfor %}
     </div>
+    <div class="container" style="text-align:left;">
+
+      {% for data in facebook_data.data %}
+      <div class="col-md-3 col-xs-6 grid-top">
+          <div class="facebook-container row">
+            <div class="col-md-3 col-xs-6 pd-t-20 pd-b-20">
+              <img src={{facebook_data.picture }}>
+            </div>
+            <div class="col-md-9 col-xs-6  pd-t-20 pd-b-20">
+              {{ facebook_data.info.name }}
+              <br>
+              {{ data.created_time }}
+            </div>
+            <div class="facebook-message">
+                  {{ data.message }} {{ data.story }}
+            </div>
+          </div>
+
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
-
 
 <div class="container text-center pd-b-20">
   <div class="text-title pd-t-20 pd-b-40">

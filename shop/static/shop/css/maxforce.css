@@ -230,7 +230,7 @@ p {
 	p {
 		font-size:18px;
 	}
-	
+
 }
 
 /* md */
@@ -238,14 +238,14 @@ p {
 	p {
 		font-size: 24px;
 	}
-	
+
 }
 /* lg */
 @media (min-width: 1200px) {
 	p {
 		font-size: 24px;
 	}
-	
+
 }
 
 .btn-c-learn {
@@ -444,6 +444,11 @@ h2 {
 	height: 250px;
 	overflow: hidden;
 }
+.facebook-message {
+	clear: both;
+	padding-left: 15px;
+}
 
-
-
+.facebook-container {
+	text-align: left;
+}
