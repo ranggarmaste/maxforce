@@ -6,6 +6,7 @@ from django.views import generic
 from django.urls import reverse
 from django.core.mail import send_mail
 from instagram.client import InstagramAPI
+from django.utils.dateparse import parse_datetime
 
 import requests
 import json
@@ -17,9 +18,15 @@ ig_client_secret = "16fd29644c274603bf08a4df517c7a96"
 
 from .models import Product, ProductForm, ProductOrder, ProductOrderForm, Article, ArticleForm, About, AboutForm
 
+def parse_date(data):
+    for datum in data:
+        time = parse_datetime(datum['created_time'])
+        datum['created_time'] = str(time.day) + '-' + str(time.month) + '-' + str(time.year) + ', ' + str(time.hour) + ':' + str(time.minute)
+
 def get_facebook():
     info = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '?access_token=' + fb_access_token).json()
     data = requests.get('https://graph.facebook.com/v2.8/' + fb_page_id + '/posts?access_token=' + fb_access_token).json()['data']
+    parse_date(data)
     for i in range(len(data)):
         post_id = data[i]['id']
         r_post = requests.get('https://graph.facebook.com/v2.8/' + post_id + '/likes?access_token=' + fb_access_token)

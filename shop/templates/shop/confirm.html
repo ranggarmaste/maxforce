@@ -8,7 +8,7 @@
     <h2 class="text-center">PLEASE CONFIRM YOUR PURCHASE<h2>
       <div class="col-xs-12">
         <div class="form-group text-center">
-          <img src="{% static product.url_photo %}" class="confirm-photo">
+          <img src="{{ product.photo.url }}" class="confirm-photo">
           <h4 style="color: red">{{ product.name }}</h4>
           <h4 style="color: red">{{ product.price }}</h4>
         </div>

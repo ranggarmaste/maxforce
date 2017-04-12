@@ -230,6 +230,7 @@ p {
 	p {
 		font-size:18px;
 	}
+
 }
 
 /* md */
@@ -237,12 +238,14 @@ p {
 	p {
 		font-size: 24px;
 	}
+
 }
 /* lg */
 @media (min-width: 1200px) {
 	p {
 		font-size: 24px;
 	}
+
 }
 
 .btn-c-learn {
@@ -270,7 +273,10 @@ h2 {
 }
 
 .img-full {
-	width: 100%;
+	display: inline-block;
+	max-height: 100%;
+	height: auto;
+	width: auto;
 	max-width: 100%;
 }
 
@@ -432,4 +438,17 @@ h2 {
 }
 .grid-top{
 	position: relative;
+}
+.product-thumbnail {
+	position: relative;
+	height: 250px;
+	overflow: hidden;
+}
+.facebook-message {
+	clear: both;
+	padding-left: 15px;
+}
+
+.facebook-container {
+	text-align: left;
 }
