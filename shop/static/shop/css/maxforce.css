@@ -439,9 +439,11 @@ h2 {
 .grid-top:hover .b-from-left{
 	left:0;
 }
+
 .grid-top{
 	position: relative;
 }
+
 .product-thumbnail {
 	position: relative;
 	height: 250px;
@@ -454,4 +456,28 @@ h2 {
 
 .facebook-container {
 	text-align: left;
+}
+
+.fb-href {
+	color: black;
+}
+
+.fb-href:hover div {
+	color: black;
+	background-color: rgba(220,220,220,0.7);
+}
+
+.media-fb {
+	border: 1px solid rgba(220,220,220,0.5);
+	border-right: 0px solid black;
+	padding-bottom: 20px;
+}
+
+.fb-href:last-child .media-fb {
+	border-right: 1px solid rgba(220,220,220,0.5);
+}
+
+#separator {
+	border-color: rgba(220,220,220,0.5);
+	padding-bottom: 20px;
 }
