@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+	<div class="container" style="margin-top: 100px;">
+		<div class="text-center text-title pd-t-20 pd-b-40">
+			<h2>{{ article.title }}</h2>
+			<div class="group-shape">
+				<div id="element1">  <hr></div>
+				<div id="element2">  <div class="diamond-small"></div> </div>
+				<div id="element3">  <hr> </div>
+			</div>
+			<div class="pd-t-20 pd-b-20">
+				<div class="detail-about pd-t-10 pd-b-10">
+					{{ article.description }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

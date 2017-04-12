@@ -46,7 +46,12 @@ def products(request):
 def articles(request):
     template_name = 'shop/articles.html'
     articles = Article.objects.all
-    return render(request, template_name, { 'articles' : articles})
+    return render(request, template_name, { 'articles' : articles })
+
+def article(request, pk):
+    template_name = 'shop/blog-detail.html'
+    article= Article.objects.get(pk=pk)
+    return render(request, template_name, { 'article' : article })
 
 def product(request, pk):
     template_name = 'shop/product.html'
